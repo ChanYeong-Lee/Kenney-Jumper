@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
         if (alive)
         {
             CheckGround();
+            if (isGround)
+                jumpCount = 2;
             TryJump();
         }
         rb.gravityScale = 2 + GameManager.objectMoveSpeed / 3;
@@ -80,12 +82,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (isGround)
-            {
-                Jump();
-                jumpCount = 1;
-            }
-            else if (jumpCount > 0)
+            if (jumpCount > 0)
             {
                 Jump();
                 jumpCount--;
@@ -96,6 +93,7 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         isJumping = true;
+        isGround = false;
         velocity = Mathf.Sqrt(2 * rb.gravityScale * 9.81f * 2);
         rb.velocity = new Vector2(0, velocity);
     }
