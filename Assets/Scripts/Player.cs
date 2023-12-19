@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("Hitfloor");
                 isGround = true;
+                isJumping = false;
             }
         }
         else
