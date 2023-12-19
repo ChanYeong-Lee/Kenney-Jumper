@@ -10,6 +10,14 @@ public class ObjectMove : MonoBehaviour
     private void FixedUpdate()
     {
         moveSpeed = GameManager.objectMoveSpeed;
-        transform.position = new Vector3(transform.position.x - moveSpeed * Time.fixedDeltaTime, transform.position.y, 0);    
+        transform.position = new Vector3(transform.position.x - moveSpeed * Time.fixedDeltaTime, transform.position.y, 0);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Finish"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

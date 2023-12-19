@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Floor
+  - DeadLine
   layers:
   - Default
   - TransparentFX
