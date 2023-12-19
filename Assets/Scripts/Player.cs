@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public bool isGround;
     public bool isJumping;
     public bool alive;
+    float velocity;
     private void Awake()
     {
         col = GetComponent<Collider2D>();
@@ -28,9 +29,8 @@ public class Player : MonoBehaviour
             TryJump();
         }
         rb.gravityScale = 2 + GameManager.objectMoveSpeed / 3;
-        isJumping = !isGround;
-        animator.SetFloat("runningSpeed", GameManager.objectMoveSpeed - 2);
-        animator.SetBool("isJumping", isJumping);
+        animator.SetFloat("runningSpeed", GameManager.objectMoveSpeed / 3);
+        animator.SetBool("isJumping", !isGround);
         animator.SetBool("isDead", !alive);
     }
 
@@ -46,7 +46,8 @@ public class Player : MonoBehaviour
         if (collision.collider.tag.Equals("Obstacle"))
         {
             alive = false;
-            col.enabled = false;
+            rb.velocity = new Vector2(0, 1.5f * velocity);
+            col.isTrigger = true;
         }
     }
 
@@ -60,7 +61,7 @@ public class Player : MonoBehaviour
 
     private void CheckGround()
     {
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.down, 1.04f);
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.down, 1.05f);
         if (ray.collider != null)
         {
             if (ray.collider.gameObject.tag.Equals("Floor"))
@@ -93,7 +94,8 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        float velocity = Mathf.Sqrt(2 * rb.gravityScale * 9.81f * 2);
+        isJumping = true;
+        velocity = Mathf.Sqrt(2 * rb.gravityScale * 9.81f * 2);
         rb.velocity = new Vector2(0, velocity);
     }
 }

@@ -350,6 +350,7 @@ MonoBehaviour:
   objects:
   - {fileID: 6970482976106362804, guid: 0b33b096640c0864a8d69a02e972f443, type: 3}
   - {fileID: 4007494018214634879, guid: 8dbc850a02e086347983ea95fa75a79e, type: 3}
+  - {fileID: 6970482976106362804, guid: 802df1938e5c97b43a970709952840fa, type: 3}
   scoreText: {fileID: 1754513694}
 --- !u!4 &143248142
 Transform:
@@ -402,7 +403,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -627,10 +628,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 668006295}
+  - component: {fileID: 668006296}
   - component: {fileID: 668006294}
   - component: {fileID: 668006293}
   - component: {fileID: 668006292}
-  - component: {fileID: 668006296}
   - component: {fileID: 668006297}
   m_Layer: 2
   m_Name: Player
